@@ -1,24 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 
+import ItemList from './components/ItemList';
+
+// Context
+import {ItemContext} from './context/ItemContext';
+
 function App() {
+    const [items, setItems] = useState([])
+    const {Provider} = ItemContext;
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <Provider value = {{items}}>
+     <ItemList />
+     </Provider >
     </div>
   );
 }
